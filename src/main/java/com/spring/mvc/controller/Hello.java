@@ -24,4 +24,20 @@ public class Hello {
         int sum = a + b;
         return sum + "";
     }
+    
+     /*
+        Ant 語法:
+        * : 任意多字
+        ? : 任意一字
+        ** : 任意多組資料夾
+    */
+    
+    // @RequestMapping("/*/antPath")  
+    // @RequestMapping("/java?/antPath")
+    @RequestMapping("/**/antPath") 
+    @ResponseBody
+    public String antPath(){
+        return "Ant path Success!!!";
+    }
+    
 }
