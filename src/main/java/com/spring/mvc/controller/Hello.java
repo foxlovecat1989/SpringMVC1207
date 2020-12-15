@@ -2,6 +2,7 @@ package com.spring.mvc.controller;
 
 import java.util.Date;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -15,5 +16,12 @@ public class Hello {
     @ResponseBody               // 把 return的內容作為 response body
     public String time() {
         return new Date().toString();
+    }
+    
+    @RequestMapping("/add/{a}/{b}")
+    @ResponseBody
+    public String add(@PathVariable int a, @PathVariable int b){
+        int sum = a + b;
+        return sum + "";
     }
 }
