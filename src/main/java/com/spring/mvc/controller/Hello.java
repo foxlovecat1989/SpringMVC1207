@@ -4,6 +4,7 @@ import java.util.Date;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
@@ -39,5 +40,29 @@ public class Hello {
     public String antPath(){
         return "Ant path Success!!!";
     }
+    
+    // /login?username=admin&password=1234
+    // /checkin?username=admin&password=4321
+    // /login?username=admin
+    @RequestMapping(value = {"/login", "/checkin"})
+    @ResponseBody
+   //public String login(@RequestParam String username, 
+         // @RequestParam String password){
+    public String login(@RequestParam String username, 
+            @RequestParam(required = false) String password){ 
+        return username + ":" + password;
+   }
+    
+    
+    // /login2?user=admin&pwd=1234
+    // /login2?&pwd=1234
+    @RequestMapping(value = {"/login2", "/checkin2"})
+    @ResponseBody 
+    public String login2(
+            @RequestParam(name = "user", required = false) String username, 
+            @RequestParam(name = "pwd") String password){ 
+        return username + ":" + password;
+   }
+
     
 }
