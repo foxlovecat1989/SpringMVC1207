@@ -1,6 +1,7 @@
 package com.spring.mvc.controller;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -73,4 +74,11 @@ public class Hello {
         return params.toString();
     }
     
+    // 一個參數擁有多個值時
+    // /login4?id=1,3,2,5,68
+    @RequestMapping(value = {"/login4"})
+    @ResponseBody
+    public String login4(@RequestParam(name = "id") List<String> ids){
+        return ids.toString();
+    }
 }
