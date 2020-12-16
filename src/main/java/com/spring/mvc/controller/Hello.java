@@ -1,6 +1,7 @@
 package com.spring.mvc.controller;
 
 import java.util.Date;
+import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -63,6 +64,13 @@ public class Hello {
             @RequestParam(name = "pwd") String password){ 
         return username + ":" + password;
    }
-
+    
+    // 多個參數時
+    // /login3?user=admin&pwd=1234&age=12&level=7
+    @RequestMapping(value = {"/login3"})
+    @ResponseBody
+    public String login3(@RequestParam Map<String, String> params){
+        return params.toString();
+    }
     
 }
