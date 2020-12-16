@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class Lotto {
     
     @Autowired
-    LottoService lottoService;
+    private LottoService lottoService;
     
     @RequestMapping("/get")
     @ResponseBody
     public String get(){
-        return lottoService.toString();
+        return lottoService.getNumbers().toString();
     }
 }
